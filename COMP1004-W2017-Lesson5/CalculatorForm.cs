@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,7 @@ namespace COMP1004_W2017_Lesson5
         private string _operand1;
         private string _operand2;
         private bool _isCalculatorClear;
+        private string _calculatorFormLayout;
 
         // CONSTRUCTORS ++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -32,7 +34,22 @@ namespace COMP1004_W2017_Lesson5
             InitializeComponent();
 
             this._clearCalculator();
+            this.CalculatorFormLayout = "Standard";
         }
+
+        // PUBLIC PROPERTIES ++++++++++++++++++++++++++++++++++++++++++++++
+        public string CalculatorFormLayout {
+            get {
+                return this._calculatorFormLayout;
+            }
+
+            set {
+                this._calculatorFormLayout = value;
+                Debug.WriteLine("Calculator Form Changed");
+            }
+
+        }
+
 
         /// <summary>
         /// This method clears the calculator app and resets the variables
@@ -110,11 +127,21 @@ namespace COMP1004_W2017_Lesson5
 
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Create a Dialog Result container;
+            DialogResult result;
+
             // Step 1. Create a new Form - Options Form
             OptionsForm optionsForm = new OptionsForm();
 
-            // Step 2. show the Options Form with ShowDialog (a modal method to display the form)
-            optionsForm.ShowDialog();
+            // Step 2. set a reference to the "PreviousForm" property of the Options Form to this form
+            optionsForm.PreviousForm = this;
+
+            optionsForm.CalculatorLayout = this.CalculatorFormLayout;
+
+            // Step 3. show the Options Form with ShowDialog (a modal method to display the form)
+            result = optionsForm.ShowDialog();
+
+            Debug.WriteLine(result.ToString());
         }
     }
 }

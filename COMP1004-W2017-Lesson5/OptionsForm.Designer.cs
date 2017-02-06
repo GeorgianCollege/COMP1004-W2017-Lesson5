@@ -31,23 +31,27 @@
             this.AcceptButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
             this.FunctiionGroupBox = new System.Windows.Forms.GroupBox();
-            this.SquareRootCheckBox = new System.Windows.Forms.CheckBox();
             this.ExponentCheckBox = new System.Windows.Forms.CheckBox();
+            this.SquareRootCheckBox = new System.Windows.Forms.CheckBox();
             this.LayoutGroupBox = new System.Windows.Forms.GroupBox();
-            this.StandardRadioButton = new System.Windows.Forms.RadioButton();
             this.ScientificRadioButton = new System.Windows.Forms.RadioButton();
+            this.StandardRadioButton = new System.Windows.Forms.RadioButton();
+            this.FontButton = new System.Windows.Forms.Button();
+            this.CalculatorFontDialog = new System.Windows.Forms.FontDialog();
             this.FunctiionGroupBox.SuspendLayout();
             this.LayoutGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // AcceptButton
             // 
+            this.AcceptButton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.AcceptButton.Location = new System.Drawing.Point(12, 308);
             this.AcceptButton.Name = "AcceptButton";
             this.AcceptButton.Size = new System.Drawing.Size(148, 58);
             this.AcceptButton.TabIndex = 0;
             this.AcceptButton.Text = "Accept";
             this.AcceptButton.UseVisualStyleBackColor = true;
+            this.AcceptButton.Click += new System.EventHandler(this._acceptButton_Click);
             // 
             // CancelButton
             // 
@@ -58,6 +62,7 @@
             this.CancelButton.TabIndex = 1;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this._cancelButton_Click);
             // 
             // FunctiionGroupBox
             // 
@@ -71,16 +76,6 @@
             this.FunctiionGroupBox.TabStop = false;
             this.FunctiionGroupBox.Text = "Functions";
             // 
-            // SquareRootCheckBox
-            // 
-            this.SquareRootCheckBox.AutoSize = true;
-            this.SquareRootCheckBox.Location = new System.Drawing.Point(6, 44);
-            this.SquareRootCheckBox.Name = "SquareRootCheckBox";
-            this.SquareRootCheckBox.Size = new System.Drawing.Size(170, 33);
-            this.SquareRootCheckBox.TabIndex = 0;
-            this.SquareRootCheckBox.Text = "Square Root";
-            this.SquareRootCheckBox.UseVisualStyleBackColor = true;
-            // 
             // ExponentCheckBox
             // 
             this.ExponentCheckBox.AutoSize = true;
@@ -90,6 +85,16 @@
             this.ExponentCheckBox.TabIndex = 1;
             this.ExponentCheckBox.Text = "Exponent";
             this.ExponentCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // SquareRootCheckBox
+            // 
+            this.SquareRootCheckBox.AutoSize = true;
+            this.SquareRootCheckBox.Location = new System.Drawing.Point(6, 44);
+            this.SquareRootCheckBox.Name = "SquareRootCheckBox";
+            this.SquareRootCheckBox.Size = new System.Drawing.Size(170, 33);
+            this.SquareRootCheckBox.TabIndex = 0;
+            this.SquareRootCheckBox.Text = "Square Root";
+            this.SquareRootCheckBox.UseVisualStyleBackColor = true;
             // 
             // LayoutGroupBox
             // 
@@ -103,6 +108,17 @@
             this.LayoutGroupBox.TabStop = false;
             this.LayoutGroupBox.Text = "Layout";
             // 
+            // ScientificRadioButton
+            // 
+            this.ScientificRadioButton.AutoSize = true;
+            this.ScientificRadioButton.Location = new System.Drawing.Point(7, 83);
+            this.ScientificRadioButton.Name = "ScientificRadioButton";
+            this.ScientificRadioButton.Size = new System.Drawing.Size(131, 33);
+            this.ScientificRadioButton.TabIndex = 1;
+            this.ScientificRadioButton.Text = "Scientific";
+            this.ScientificRadioButton.UseVisualStyleBackColor = true;
+            this.ScientificRadioButton.CheckedChanged += new System.EventHandler(this._calculatorLayoutRadioButton_CheckedChanged);
+            // 
             // StandardRadioButton
             // 
             this.StandardRadioButton.AutoSize = true;
@@ -114,24 +130,30 @@
             this.StandardRadioButton.TabStop = true;
             this.StandardRadioButton.Text = "Standard";
             this.StandardRadioButton.UseVisualStyleBackColor = true;
+            this.StandardRadioButton.CheckedChanged += new System.EventHandler(this._calculatorLayoutRadioButton_CheckedChanged);
             // 
-            // ScientificRadioButton
+            // FontButton
             // 
-            this.ScientificRadioButton.AutoSize = true;
-            this.ScientificRadioButton.Location = new System.Drawing.Point(7, 83);
-            this.ScientificRadioButton.Name = "ScientificRadioButton";
-            this.ScientificRadioButton.Size = new System.Drawing.Size(131, 33);
-            this.ScientificRadioButton.TabIndex = 1;
-            this.ScientificRadioButton.Text = "Scientific";
-            this.ScientificRadioButton.UseVisualStyleBackColor = true;
+            this.FontButton.Location = new System.Drawing.Point(12, 202);
+            this.FontButton.Name = "FontButton";
+            this.FontButton.Size = new System.Drawing.Size(148, 58);
+            this.FontButton.TabIndex = 4;
+            this.FontButton.Text = "Font";
+            this.FontButton.UseVisualStyleBackColor = true;
+            this.FontButton.Click += new System.EventHandler(this._fontButton_Click);
+            // 
+            // CalculatorFontDialog
+            // 
+            this.CalculatorFontDialog.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CalculatorFontDialog.MaxSize = 24;
+            this.CalculatorFontDialog.MinSize = 10;
             // 
             // OptionsForm
             // 
-            this.AcceptButton = this.AcceptButton;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.CancelButton = this.CancelButton;
             this.ClientSize = new System.Drawing.Size(484, 378);
             this.ControlBox = false;
+            this.Controls.Add(this.FontButton);
             this.Controls.Add(this.LayoutGroupBox);
             this.Controls.Add(this.FunctiionGroupBox);
             this.Controls.Add(this.CancelButton);
@@ -159,5 +181,7 @@
         private System.Windows.Forms.GroupBox LayoutGroupBox;
         private System.Windows.Forms.RadioButton ScientificRadioButton;
         private System.Windows.Forms.RadioButton StandardRadioButton;
+        private System.Windows.Forms.Button FontButton;
+        private System.Windows.Forms.FontDialog CalculatorFontDialog;
     }
 }
